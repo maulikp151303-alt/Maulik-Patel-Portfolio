@@ -282,30 +282,47 @@
       </div>
     </section>
 
-    <!-- CONTACT -->
-    <section class="section" id="contact">
-      <div class="container split">
-        <div class="reveal">
-          <h3 class="section-title" style="color:var(--accent)">Get in Touch</h3>
-          <p class="muted">Open to internships, entry-level roles, and freelance projects. I reply quickly — let's discuss how I can help.</p>
-          <div style="margin-top:18px" class="contact-card">
-            <form id="contact-form">
-              <label for="name" class="muted">Name</label>
-              <input type="text" id="name" name="name" placeholder="Your name" required />
+    <!-- CONTACT SECTION -->
+<section id="contact" class="contact-section">
+  <h2>Contact Me</h2>
+  <p>I'd love to hear from you! Fill out the form below and I'll get back to you soon.</p>
 
-              <label for="email" class="muted">Email</label>
-              <input type="email" id="email" name="email" placeholder="Your email" required />
+  <form id="contact-form">
+  <input type="text" name="from_name" placeholder="Your Name" required />
+  <input type="email" name="from_email" placeholder="Your Email" required />
+  <textarea name="message" placeholder="Your Message" required></textarea>
+  <button type="submit">Send Message</button>
+</form>
+<p id="form-status"></p>
+</section>
 
-              <label for="message" class="muted">Message</label>
-              <textarea id="message" name="message" rows="6" placeholder="Tell me about the project or role..."></textarea>
+<!-- Add EmailJS library -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 
-              <div style="margin-top:12px;display:flex;gap:10px">
-                <button class="btn-primary" type="submit">Send Message</button>
-                <button class="btn-ghost" type="button" id="copy-email">Copy Email</button>
-              </div>
-              <div id="form-msg" style="margin-top:10px;color:var(--accent);display:none">Message sent — thanks!</div>
-            </form>
-          </div>
+<script>
+  // Initialize EmailJS with your Public Key
+  emailjs.init("xsM_LaGACQHNt1zW0");
+
+  // Handle the form submission
+  const form = document.getElementById("contact-form");
+  const status = document.getElementById("form-status");
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    status.textContent = "Sending...";
+
+    emailjs.sendForm("service_ih16zo9", "template_9ifhvya", this)
+      .then(() => {
+        status.textContent = "✅ Message sent successfully!";
+        form.reset();
+      }, (error) => {
+        console.error("EmailJS Error:", error);
+        status.textContent = "❌ Failed to send message. Please try again later.";
+      });
+  });
+</script>
+
+      </div>
         </div>
 
         <aside class="reveal">

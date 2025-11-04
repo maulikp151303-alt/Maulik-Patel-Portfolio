@@ -2,11 +2,18 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Maulik Patel — Developer & AI/ML Engineer</title>
-  <meta name="description" content="Maulik Patel — Developer | AI/ML Engineer | Java, Spring Boot, React, MySQL" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Maulik Patel — Portfolio</title>
+  <meta name="description" content="Maulik Patel — Developer • AI/ML Engineer • Java, Spring Boot, React, MySQL" />
+
+  <!-- Preload critical hero image (fast paint) -->
+  <link rel="preload" href="assets/Maulik profile(side).webp" as="image" />
+
+  <!-- Fonts & CSS -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Libraries -->
   <script defer src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
@@ -14,148 +21,166 @@
   <script defer src="https://cdn.jsdelivr.net/npm/tsparticles@2.11.0/tsparticles.bundle.min.js"></script>
   <script defer src="script.js"></script>
 </head>
-
 <body>
-  <div id="tsparticles"></div>
 
-  <!-- Header -->
-  <header>
-    <div class="logo-group" id="profile-logo">
-      <img src="assets/Maulik Profile (front).png" alt="Maulik Patel" class="logo-photo" />
-      <div class="logo">MP</div>
-    </div>
-    <nav>
+  <!-- Particles (initialized only on large screens in JS) -->
+  <div id="tsparticles" aria-hidden="true"></div>
+
+  <!-- ===== HEADER ===== -->
+  <header id="site-header" role="banner">
+    <!-- Left: Logo -->
+    <button class="logo-group" id="profile-logo" aria-label="Open profile">
+      <img src="assets/Maulik Profile (front).webp" alt="Maulik Patel" class="logo-photo" width="42" height="42" />
+      <span class="logo">MP</span>
+    </button>
+
+    <!-- Center: Desktop Nav -->
+    <nav id="desktop-nav" aria-label="Primary">
       <a href="#home">Home</a>
       <a href="#about">About</a>
       <a href="#projects">Projects</a>
       <a href="#certs">Certifications</a>
       <a href="#contact">Contact</a>
-      <a href="assets/Maulik Amit Patel CV.pdf" class="btn-primary">Resume</a>
     </nav>
-    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Theme">🌙</button>
-    <button class="menu-toggle" id="menu-toggle">☰</button>
 
+    <!-- Right: Controls -->
+    <div class="header-right">
+      <button id="theme-toggle" class="icon-btn" aria-label="Toggle theme">🌙</button>
+      <button id="menu-toggle" class="icon-btn" aria-label="Open menu">☰</button>
+    </div>
   </header>
 
-  <!-- Hero -->
-  <section id="home" class="hero">
-    <div class="hero-inner">
-      <div class="hero-left">
-        <h1>Hi, I'm <span class="accent">Maulik Patel</span></h1>
-        <h2><span id="typewriter"></span></h2>
-        <p>Developer & AI/ML Engineer passionate about building intelligent and scalable web systems.</p>
-        <div class="hero-buttons">
-          <a href="#projects" class="btn-primary">View Projects</a>
-          <a href="#contact" class="btn-secondary">Hire Me</a>
+  <!-- Backdrop for menu/modals (click to close) -->
+  <div id="backdrop" aria-hidden="true"></div>
+
+  <!-- Mobile Menu (slides from right) -->
+  <aside id="mobile-menu" aria-label="Mobile menu">
+    <nav class="mobile-menu-nav">
+      <a href="#home" class="mm-link">Home</a>
+      <a href="#about" class="mm-link">About</a>
+      <a href="#projects" class="mm-link">Projects</a>
+      <a href="#certs" class="mm-link">Certifications</a>
+      <a href="#contact" class="mm-link">Contact</a>
+      <button id="mobile-theme-switch" class="menu-theme">🌗 Toggle Theme</button>
+    </nav>
+  </aside>
+
+  <main id="main">
+    <!-- ===== HERO ===== -->
+    <section id="home" class="hero section">
+      <div class="hero-inner container">
+        <div class="hero-left">
+          <h1>Hi, I'm <span class="accent">Maulik Patel</span></h1>
+          <h2><span id="typewriter"></span></h2>
+          <p class="lead">
+            Developer & AI/ML Engineer building intelligent, production-ready web and data systems.
+          </p>
+          <div class="hero-buttons">
+            <a href="#projects" class="btn-primary">View Projects</a>
+            <a href="#contact" class="btn-secondary">Hire Me</a>
+          </div>
+        </div>
+        <div class="hero-right">
+          <button class="photo-frame" id="profile-open" aria-label="Open profile">
+            <img
+              src="assets/Maulik profile(side).webp"
+              alt="Maulik Patel"
+              width="320" height="320"
+              loading="eager"
+            />
+          </button>
         </div>
       </div>
-      <div class="hero-right">
-        <div class="photo-frame">
-          <img src="assets/Maulik profile(side).png" alt="Maulik Patel" />
+    </section>
+
+    <!-- ===== ABOUT ===== -->
+    <section id="about" class="section">
+      <h2 class="section-title">About Me</h2>
+      <div class="about-grid container">
+        <div>
+          <p>
+            I’m <strong>Maulik Patel</strong>, a B.Sc. IT graduate (Mumbai University).
+            I specialize in <b>Java, Spring Boot, React, Node.js, MySQL</b>, and I'm exploring <b>AI/ML</b>.
+            I build practical full-stack & ML solutions and keep iterating on performance and UX.
+          </p>
+          <ul class="skills">
+            <li><strong>Frontend:</strong> HTML, CSS, JavaScript, React, Next.js, Tailwind</li>
+            <li><strong>Languages:</strong> JavaScript, TypeScript, Java, DSA & Algorithms</li>
+            <li><strong>Tools:</strong> Git, GitHub, VS Code</li>
+          </ul>
         </div>
+        <aside class="stats">
+          <div class="stat"><span class="num" data-target="1">0</span><span class="label">Years Experience</span></div>
+          <div class="stat"><span class="num" data-target="5">0</span><span class="label">Projects</span></div>
+          <div class="stat"><span class="num" data-target="3">0</span><span class="label">Certifications</span></div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ===== PROJECTS ===== -->
+    <section id="projects" class="section">
+      <h2 class="section-title">Featured Projects</h2>
+      <div class="container">
+        <div class="filters">
+          <button class="filter active" data-filter="all">All</button>
+          <button class="filter" data-filter="web">Web</button>
+          <button class="filter" data-filter="ai">AI/ML</button>
+          <button class="filter" data-filter="fullstack">Full Stack</button>
+        </div>
+        <div id="project-grid" class="project-grid"></div>
+      </div>
+    </section>
+
+    <!-- ===== CERTIFICATIONS ===== -->
+    <section id="certs" class="section">
+      <h2 class="section-title">Certifications & Achievements</h2>
+      <div id="cert-grid" class="cert-grid container"></div>
+    </section>
+
+    <!-- Cert Viewer Modal -->
+    <div id="cert-modal" class="cert-modal" aria-hidden="true" role="dialog" aria-label="Certificate viewer">
+      <div class="cert-modal-content">
+        <button id="close-cert" class="close-btn" aria-label="Close certificate">×</button>
+        <img id="cert-image" src="" alt="Certificate preview" loading="lazy" />
+        <a id="cert-download" class="btn-secondary" href="#" target="_blank" rel="noopener">Download PDF</a>
       </div>
     </div>
-  </section>
 
-  <!-- About -->
-  <section id="about" class="section">
-    <h2 class="section-title">About Me</h2>
-    <div class="about-grid">
-      <div>
-        <p>
-          I’m <strong>Maulik Patel</strong>, a B.Sc. IT graduate from Mumbai University.  
-          I specialize in <b>Java, Spring Boot, React, Node.js, and AI/ML</b>.  
-          I love building full-stack and intelligent solutions that merge performance with creativity.
-        </p>
-        <ul class="skills">
-          <li><b>Frontend:</b> HTML, CSS, JavaScript, React.js, Next.js, Tailwind CSS</li>
-          <li><b>Languages:</b> JavaScript, TypeScript, Java, Data Structures, Algorithms</li>
-          <li><b>Tools:</b> Git, GitHub, VS Code</li>
-        </ul>
+    <!-- ===== CONTACT ===== -->
+    <section id="contact" class="section">
+      <h2 class="section-title">Contact Me</h2>
+      <div class="container">
+        <form id="contact-form">
+          <input type="text" name="from_name" placeholder="Your Name" required />
+          <input type="email" name="from_email" placeholder="Your Email" required />
+          <textarea name="message" placeholder="Your Message" required></textarea>
+          <button type="submit" class="btn-primary">Send Message</button>
+          <p id="form-status" aria-live="polite"></p>
+        </form>
       </div>
-      <div class="stats">
-        <div class="stat"><span class="num" data-target="1">0</span><span class="label">Year Experience</span></div>
-        <div class="stat"><span class="num" data-target="5">0</span><span class="label">Projects</span></div>
-        <div class="stat"><span class="num" data-target="3">0</span><span class="label">Certifications</span></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Projects -->
-  <section id="projects" class="section">
-    <h2 class="section-title">Featured Projects</h2>
-    <div class="filters">
-      <button class="filter active" data-filter="all">All</button>
-      <button class="filter" data-filter="web">Web</button>
-      <button class="filter" data-filter="ai">AI/ML</button>
-      <button class="filter" data-filter="fullstack">Full Stack</button>
-    </div>
-    <div class="project-grid" id="project-grid"></div>
-  </section>
-
-  <!-- Certifications -->
-  <section id="certs" class="section">
-    <h2 class="section-title">Certifications & Achievements</h2>
-    <div class="cert-grid" id="cert-grid"></div>
-  </section>
-
-  <!-- Certificate Modal -->
-  <div class="cert-modal" id="cert-modal">
-    <div class="cert-modal-content">
-      <button id="close-cert" class="close-btn">×</button>
-      <img id="cert-image" src="" alt="Certificate Preview" />
-      <a id="cert-download" href="#" target="_blank" class="btn-secondary">Download PDF</a>
-    </div>
-  </div>
-
-  <!-- Contact -->
-  <section id="contact" class="section">
-    <h2 class="section-title">Contact Me</h2>
-    <form id="contact-form">
-      <input type="text" name="from_name" placeholder="Your Name" required />
-      <input type="email" name="from_email" placeholder="Your Email" required />
-      <textarea name="message" placeholder="Your Message" required></textarea>
-      <button type="submit" class="btn-primary">Send Message</button>
-      <p id="form-status"></p>
-    </form>
-  </section>
+    </section>
+  </main>
 
   <footer>
-    <p>© 2025 Maulik Patel — All Rights Reserved</p>
+    <div class="container center">© 2025 Maulik Patel — All Rights Reserved</div>
   </footer>
 
   <!-- Profile Modal -->
-<<<<<<< HEAD
-  <div class="modal" id="profile-modal">
+  <div id="profile-modal" class="modal" aria-hidden="true" role="dialog" aria-label="Profile">
     <div class="modal-content">
-      <button id="close-profile" class="close-btn">×</button>
+      <button id="close-profile" class="close-btn" aria-label="Close profile">×</button>
       <div class="profile-card">
-        <img src="assets/Maulik Profile (front).png" alt="Maulik Patel" class="profile-photo" />
+        <img src="assets/Maulik Profile (front).webp" alt="Maulik Patel" class="profile-photo" width="120" height="120" loading="lazy" />
         <h2>Maulik Amit Patel</h2>
         <p class="subtitle">Developer • AI/ML Enthusiast</p>
         <hr />
-        <p><strong>🎓 Qualification:</strong> B.Sc. IT — Mumbai University</p>
-        <p><strong>💼 Experience:</strong> 1+ Year in Software Development</p>
-        <p><strong>🧠 Current Learnings:</strong> React, Node.js, Advanced ML</p>
-        <p><strong>⚙️ Expertise:</strong> Java, Spring Boot, MySQL, Python, Git</p>
-        <p><strong>📍 Location:</strong> Virar, Mumbai, India</p>
+        <p><strong>🎓</strong> B.Sc. IT — Mumbai University</p>
+        <p><strong>💼</strong> 1+ Year — Software Development</p>
+        <p><strong>🧠</strong> Learning: React, Node, Advanced ML</p>
+        <p><strong>⚙️</strong> Java • Spring Boot • MySQL • Python • Git</p>
       </div>
-=======
-<div class="modal" id="profile-modal" aria-hidden="true">
-  <div class="modal-content">
-    <button id="close-profile" class="close-btn">×</button>
-    <div class="profile-card">
-      <img src="assets/Maulik Profile (front).png" alt="Maulik Patel" class="profile-photo" />
-      <h2>Maulik Amit Patel</h2>
-      <p class="subtitle">Developer • AI/ML Enthusiast</p>
-      <hr />
-      <p><strong>🎓 Qualification:</strong> B.Sc. IT — Mumbai University</p>
-      <p><strong>💼 Experience:</strong> 1+ Year in Client Management & Software Development</p>
-      <p><strong>🧠 Current Learnings:</strong> React, Node.js, Advanced ML</p>
-      <p><strong>⚙️ Expertise:</strong> Java, Spring Boot, MySQL, Python, AI/ML, Git</p>
-      <p><strong>📌 Location:</strong> Virar, Mumbai, India</p>
->>>>>>> ef2909d6b26e74ae5cc726cf2222cd6aedae39e4
     </div>
   </div>
+
 </body>
 </html>

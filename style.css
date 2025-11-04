@@ -461,3 +461,87 @@ footer {
   .about-grid { grid-template-columns: 1fr; }
   header { padding: 14px 24px; flex-wrap: wrap; }
 }
+/* ───────────────────────────────
+   📱 MOBILE RESPONSIVE FIXES
+──────────────────────────────── */
+@media (max-width: 900px) {
+
+  /* Adjust header for mobile */
+  header {
+    padding: 14px 20px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  nav {
+    display: none;
+    flex-direction: column;
+    background: rgba(10, 10, 20, 0.95);
+    backdrop-filter: blur(15px);
+    position: absolute;
+    top: 70px;
+    right: 10px;
+    border-radius: 12px;
+    padding: 10px 20px;
+    box-shadow: 0 0 20px rgba(0, 224, 255, 0.2);
+    z-index: 999;
+  }
+
+  nav a {
+    margin: 10px 0;
+    text-align: right;
+  }
+
+  .menu-toggle {
+    display: block;
+    font-size: 26px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    color: var(--accent2);
+  }
+
+  .menu-open nav {
+    display: flex;
+  }
+
+  /* Hero section fixes */
+  .hero {
+    flex-direction: column;
+    padding-top: 120px;
+    text-align: center;
+  }
+
+  .hero-inner {
+    flex-direction: column-reverse;
+    gap: 30px;
+  }
+
+  .hero-left {
+    text-align: center;
+  }
+
+  .photo-frame {
+    width: 220px;
+    height: 220px;
+    margin-top: 20px;
+    border-width: 2px;
+  }
+
+  .photo-frame img {
+    object-position: center top;
+  }
+
+  /* Fix About grid */
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Adjust modal sizes */
+  .modal-content,
+  .cert-modal-content {
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+}

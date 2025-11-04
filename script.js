@@ -5,8 +5,15 @@
 ────────────────────────────────────── */
 
 // === 🌓 THEME TOGGLE (Dark / Light Mode) === //
+
 const themeToggle = document.getElementById("theme-toggle");
 const body = document.body;
+// === 🍔 MOBILE MENU TOGGLE === //
+const menuToggle = document.getElementById("menu-toggle");
+menuToggle.addEventListener("click", () => {
+  document.body.classList.toggle("menu-open");
+});
+
 
 // Load saved theme from localStorage
 const savedTheme = localStorage.getItem("theme");
